@@ -1,0 +1,146 @@
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
+--------------------------------------------------------------------------------
+Std_TempoMatVet 
+0.267986
+Opt_TempoMatVet 
+0.097347
+Std_TempoMatMat 
+298.129251
+Opt_TempoMatMat 
+59.701859
+--------------------------------------------------------------------------------
+Region Mult_Mat_Vet, Group 1: FLOPS_DP
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.000277 |
+|     call count    |        1 |
++-------------------+----------+
+
++------------------------------------------+---------+---------+
+|                   Event                  | Counter |  Core 3 |
++------------------------------------------+---------+---------+
+|             INSTR_RETIRED_ANY            |  FIXC0  |  803784 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 1045292 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  |  939472 |
+| FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |       0 |
+|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  |  262161 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |   65536 |
++------------------------------------------+---------+---------+
+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.0003 |
+| Runtime unhalted [s] |    0.0003 |
+|      Clock [MHz]     | 3791.8667 |
+|          CPI         |    1.3005 |
+|      DP MFLOP/s      | 1892.0226 |
+|    AVX DP MFLOP/s    |  945.9806 |
+|    Packed MUOPS/s    |  236.4952 |
+|    Scalar MUOPS/s    |  946.0420 |
+|  Vectorization ratio |   19.9990 |
++----------------------+-----------+
+
+Region Mult_Mat_Vet_Opt, Group 1: FLOPS_DP
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.000099 |
+|     call count    |        1 |
++-------------------+----------+
+
++------------------------------------------+---------+--------+
+|                   Event                  | Counter | Core 3 |
++------------------------------------------+---------+--------+
+|             INSTR_RETIRED_ANY            |  FIXC0  | 599818 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 381771 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 343214 |
+| FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |      0 |
+|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  | 262161 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |  65536 |
++------------------------------------------+---------+--------+
+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.0001 |
+| Runtime unhalted [s] |    0.0001 |
+|      Clock [MHz]     | 3790.8554 |
+|          CPI         |    0.6365 |
+|      DP MFLOP/s      | 5313.8577 |
+|    AVX DP MFLOP/s    | 2656.8427 |
+|    Packed MUOPS/s    |  664.2107 |
+|    Scalar MUOPS/s    | 2657.0150 |
+|  Vectorization ratio |   19.9990 |
++----------------------+-----------+
+
+Region Mult_Mat_Mat, Group 1: FLOPS_DP
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.298165 |
+|     call count    |        1 |
++-------------------+----------+
+
++------------------------------------------+---------+------------+
+|                   Event                  | Counter |   Core 3   |
++------------------------------------------+---------+------------+
+|             INSTR_RETIRED_ANY            |  FIXC0  |  942420800 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 1113609000 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 1002806000 |
+| FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |          0 |
+|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  |  268435500 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |          0 |
++------------------------------------------+---------+------------+
+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.2982 |
+| Runtime unhalted [s] |    0.3268 |
+|      Clock [MHz]     | 3784.5573 |
+|          CPI         |    1.1816 |
+|      DP MFLOP/s      |  900.2921 |
+|    AVX DP MFLOP/s    |         0 |
+|    Packed MUOPS/s    |         0 |
+|    Scalar MUOPS/s    |  900.2921 |
+|  Vectorization ratio |         0 |
++----------------------+-----------+
+
+Region Mult_Mat_Mat_Opt, Group 1: FLOPS_DP
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.059712 |
+|     call count    |        1 |
++-------------------+----------+
+
++------------------------------------------+---------+-----------+
+|                   Event                  | Counter |   Core 3  |
++------------------------------------------+---------+-----------+
+|             INSTR_RETIRED_ANY            |  FIXC0  | 331605300 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 221181200 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 198978800 |
+| FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |         0 |
+|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  | 268435500 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |         0 |
++------------------------------------------+---------+-----------+
+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.0597 |
+| Runtime unhalted [s] |    0.0649 |
+|      Clock [MHz]     | 3788.2679 |
+|          CPI         |    0.6670 |
+|      DP MFLOP/s      | 4495.4733 |
+|    AVX DP MFLOP/s    |         0 |
+|    Packed MUOPS/s    |         0 |
+|    Scalar MUOPS/s    | 4495.4733 |
+|  Vectorization ratio |         0 |
++----------------------+-----------+
+

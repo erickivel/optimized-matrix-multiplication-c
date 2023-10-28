@@ -3,4 +3,8 @@
 # Otimizações realizadas
 
 - Unroll & Jam
+  Foi aplicado unroll & jam nas duas multiplicações, reduzindo assim o
+  número de acessos ao
+
 - Restrict
+  
