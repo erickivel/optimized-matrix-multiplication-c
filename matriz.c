@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h> // Para uso de função 'memset()'
 
+#include "likwid.h"
 #include "matriz.h"
 
 /**
@@ -99,24 +100,40 @@ void liberaVetor(void *vet) { free(vet); }
 
 void multMatVet(MatRow mat, restrict Vetor v, int m, int n,
                 restrict Vetor res) {
+  LIKWID_MARKER_INIT;
+  LIKWID_MARKER_START("Mult_Mat_Vet");
   double time = timestamp();
 
-  // if (res) {
-  //   for (int i = 0; i < m; ++i)
-  //     for (int j = 0; j < n; ++j) {
-  //       res[i] += mat[n * i + j] * v[j];
-  //     }
-  // }
+  /* Efetua a multiplicação */
+  if (res) {
+    for (int i = 0; i < m; ++i)
+      for (int j = 0; j < n; ++j) {
+        res[i] += mat[n * i + j] * v[j];
+      }
+  }
+
+  time = timestamp() - time;
+
+  printf("Std_TempoMatVet \n%lf\n", time);
+  LIKWID_MARKER_STOP("Mult_Mat_Vet");
+  LIKWID_MARKER_CLOSE;
+}
+
+void multMatVetOpt(MatRow mat, restrict Vetor v, int m, int n,
+                   restrict Vetor res) {
+  LIKWID_MARKER_INIT;
+  LIKWID_MARKER_START("Mult_Mat_Vet_Opt");
+  double time = timestamp();
 
   /* Efetua a multiplicação */
-
-  // /*
   if (res) {
     for (int i = 0; i < m - m % UF; i += UF) {
-      // UF = 2
+      // UF = 4
       for (int j = 0; j < n; ++j) {
         res[i] += mat[n * i + j] * v[j];
         res[i + 1] += mat[n * (i + 1) + j] * v[j];
+        res[i + 2] += mat[n * (i + 2) + j] * v[j];
+        res[i + 3] += mat[n * (i + 3) + j] * v[j];
       }
     }
 
@@ -127,11 +144,12 @@ void multMatVet(MatRow mat, restrict Vetor v, int m, int n,
       }
     }
   }
-  // */
 
   time = timestamp() - time;
 
-  printf("T MatVet: %lf", time);
+  printf("Opt_TempoMatVet \n%lf\n", time);
+  LIKWID_MARKER_STOP("Mult_Mat_Vet_Opt");
+  LIKWID_MARKER_CLOSE;
 }
 
 /**
@@ -145,15 +163,33 @@ void multMatVet(MatRow mat, restrict Vetor v, int m, int n,
  */
 
 void multMatMat(MatRow A, MatRow B, int n, MatRow C) {
+  LIKWID_MARKER_INIT;
+
+  LIKWID_MARKER_START("Mult_Mat_Mat");
   double time = timestamp();
 
-  // for (int i = 0; i < n; ++i)
-  //   for (int j = 0; j < n; ++j)
-  //     for (int k = 0; k < n; ++k)
-  //       C[i * n + j] += A[i * n + k] * B[k * n + j];
+  /* Efetua a multiplicação */
+  for (int i = 0; i < n; ++i)
+    for (int j = 0; j < n; ++j)
+      for (int k = 0; k < n; ++k)
+        C[i * n + j] += A[i * n + k] * B[k * n + j];
+
+  time = timestamp() - time;
+
+  printf("Std_TempoMatMat \n%lf\n", time);
+  LIKWID_MARKER_STOP("Mult_Mat_Mat");
+
+  LIKWID_MARKER_CLOSE;
+}
+
+void multMatMatOpt(restrict MatRow A, restrict MatRow B, int n,
+                   restrict MatRow C) {
+  LIKWID_MARKER_INIT;
+
+  LIKWID_MARKER_START("Mult_Mat_Mat_Opt");
+  double time = timestamp();
 
   /* Efetua a multiplicação */
-  // /*
   if (A && B) {
     int istart, iend, jstart, jend, kstart, kend;
 
@@ -174,6 +210,8 @@ void multMatMat(MatRow A, MatRow B, int n, MatRow C) {
                 int bIdx = k * n + j;
                 C[cIdx] += A[aIdx] * B[bIdx];
                 C[cIdx + 1] += A[aIdx] * B[bIdx + 1];
+                C[cIdx + 2] += A[aIdx] * B[bIdx + 2];
+                C[cIdx + 3] += A[aIdx] * B[bIdx + 3];
               }
             }
           }
@@ -181,11 +219,13 @@ void multMatMat(MatRow A, MatRow B, int n, MatRow C) {
       }
     }
   }
-  // */
 
   time = timestamp() - time;
 
-  printf("T MatMat: %lf", time);
+  printf("Opt_TempoMatMat \n%lf\n", time);
+  LIKWID_MARKER_STOP("Mult_Mat_Mat_Opt");
+
+  LIKWID_MARKER_CLOSE;
 }
 
 /**

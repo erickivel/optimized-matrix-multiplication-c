@@ -26,8 +26,8 @@ static void usage(char *progname) {
 int main(int argc, char *argv[]) {
   int n = DEF_SIZE;
 
-  MatRow mRow_1, mRow_2, resMat;
-  Vetor vet, res;
+  MatRow mRow_1, mRow_2, resMat, resMatOpt;
+  Vetor vet, res, resOpt;
 
   /* =============== TRATAMENTO DE LINHA DE COMANDO =============== */
 
@@ -41,20 +41,24 @@ int main(int argc, char *argv[]) {
   srandom(20232);
 
   res = geraVetor(n, 1); // (real_t *) malloc (n*sizeof(real_t));
+  resOpt = geraVetor(n, 1);
   resMat = geraMatRow(n, n, 1);
+  resMatOpt = geraMatRow(n, n, 1);
 
   mRow_1 = geraMatRow(n, n, 0);
   mRow_2 = geraMatRow(n, n, 0);
 
   vet = geraVetor(n, 0);
 
-  if (!res || !resMat || !mRow_1 || !mRow_2 || !vet) {
+  if (!res || !resMat || !resOpt || !resMatOpt || !mRow_1 || !mRow_2 || !vet) {
     fprintf(stderr, "Falha em alocação de memória !!\n");
     liberaVetor((void *)mRow_1);
     liberaVetor((void *)mRow_2);
     liberaVetor((void *)resMat);
+    liberaVetor((void *)resMatOpt);
     liberaVetor((void *)vet);
     liberaVetor((void *)res);
+    liberaVetor((void *)resOpt);
     exit(2);
   }
 
@@ -66,19 +70,25 @@ int main(int argc, char *argv[]) {
 #endif /* _DEBUG_ */
 
   multMatVet(mRow_1, vet, n, n, res);
+  multMatVetOpt(mRow_1, vet, n, n, resOpt);
 
   multMatMat(mRow_1, mRow_2, n, resMat);
+  multMatMatOpt(mRow_1, mRow_2, n, resMatOpt);
 
 #ifdef _DEBUG_
   prnVetor(res, n);
+  prnVetor(resOpt, n);
   prnMat(resMat, n, n);
+  prnMat(resMatOpt, n, n);
 #endif /* _DEBUG_ */
 
   liberaVetor((void *)mRow_1);
   liberaVetor((void *)mRow_2);
   liberaVetor((void *)resMat);
+  liberaVetor((void *)resMatOpt);
   liberaVetor((void *)vet);
   liberaVetor((void *)res);
+  liberaVetor((void *)resOpt);
 
   return 0;
 }

@@ -5,8 +5,8 @@
 # Compilador
            CC = gcc -Wall
 
-       CFLAGS = -O3 -mavx2  -march=native
-       LFLAGS = -lm
+       CFLAGS = -O3 -mavx2 -march=native -I${LIKWID_INCLUDE} -DLIKWID_PERFMON
+       LFLAGS = -lm -L${LIKWID_LIB} -llikwid
 
 # Lista de arquivos para distribuição
 DISTFILES = *.c *.h README.md Makefile perfctr
@@ -32,7 +32,8 @@ clean:
 purge:   clean
 	@echo "Faxina ...."
 	@rm -f  $(PROG) *.o a.out $(DISTDIR) $(DISTDIR).tar
-	@rm -f *.png marker.out
+	@rm -f *.png marker.out 
+	@rm -rf ./logs ./resultados
 
 dist: purge
 	@echo "Gerando arquivo de distribuição ($(DISTDIR).tar) ..."
