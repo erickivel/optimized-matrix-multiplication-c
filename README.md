@@ -2,9 +2,16 @@
 
 # Arquivos auxiliares
     - run.sh
-        Gera todas as tabelas dos 13 tamanhos de matrizes
+        Gera todas as tabelas dos 13 tamanhos de matrizes;
     - plot.sh
-        Gera os gráficos para cada tabela
+        Gera os gráficos para cada tabela;
+    - resultados/
+        Tabela com os dados obtidos das funções com e sem
+        otimização;
+    - logs/
+        Relatório do LIKWID;
+    - graphs/
+        Gráficos plotados a partir das tabelas.
 
 # Otimizações realizadas
 

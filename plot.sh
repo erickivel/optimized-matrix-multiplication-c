@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ ! -d "graps"]; then
+if [ ! -d "graphs" ]; then
   mkdir "graphs"
 fi
 
