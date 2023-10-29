@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ ! -d "graps"]; then
+  mkdir "graphs"
+fi
+
 OUT=("Energia_MVM" "Energia_MMM"
       "Cache_miss_L2_MVM" "Cache_miss_L2_MMM"
       "Banda_De_Memoria_MVM" "Banda_De_Memoria_MMM"

@@ -33,7 +33,7 @@ purge:   clean
 	@echo "Faxina ...."
 	@rm -f  $(PROG) *.o a.out $(DISTDIR) $(DISTDIR).tar
 	@rm -f marker.out 
-	@rm -rf ./logs ./resultados ./graphs
+	@rm -rf ./logs 
 
 dist: purge
 	@echo "Gerando arquivo de distribuição ($(DISTDIR).tar) ..."

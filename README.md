@@ -1,5 +1,11 @@
 # Eric Kivel - GRR20220069 | Murilo Paes - GRR20190158
 
+# Arquivos auxiliares
+    - run.sh
+        Gera todas as tabelas dos 13 tamanhos de matrizes
+    - plot.sh
+        Gera os gráficos para cada tabela
+
 # Otimizações realizadas
 
 - Unroll & Jam
