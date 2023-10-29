@@ -27,17 +27,16 @@ $(PROG): $(OBJS)
 
 clean:
 	@echo "Limpando ...."
-	@rm -f *~ *.bak *.tmp core 
+	@rm -f *~ *.bak *.tmp core *.o
 
 purge:   clean
 	@echo "Faxina ...."
 	@rm -f  $(PROG) *.o a.out $(DISTDIR) $(DISTDIR).tar
-	@rm -f *.png marker.out 
-	@rm -rf ./logs ./resultados
+	@rm -f marker.out 
+	@rm -rf ./logs ./resultados ./graphs
 
 dist: purge
 	@echo "Gerando arquivo de distribuição ($(DISTDIR).tar) ..."
 	@ln -s . $(DISTDIR)
 	@tar -cvf $(DISTDIR).tar $(addprefix ./$(DISTDIR)/, $(DISTFILES))
 	@rm -f $(DISTDIR)
-

@@ -2,7 +2,6 @@
 
 # Eric Kivel - GRR20220069 | Murilo Paes - GRR20190158
 
-# Ns="64 100 128 200 256 512 600 900 1024"
 Ns="64 100 128 200 256 512 600 900 1024 2000 2048 3000 4000"  
 METRICA="FLOPS_DP ENERGY L3 L2CACHE" 
 LOGS_FOLDER="logs/"
@@ -137,4 +136,4 @@ do
 done
 
 echo "powersave" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governor
-# make purge
+make clean
